@@ -1,0 +1,35 @@
+<div class="content-center relative flex flex-col items-center justify-center h-auto ">
+  <div [style.backgroundImage]="'url(' + (bannerUrl | async) + ')'"
+       class="max-w-3xl flex-col w-full bg-gray-100 text-white dark:bg-gray-700 dark:text-white shadow-xl h-full">
+    <div class="fex-col sm:flex gap-2 p-5 border store-banner">
+      <div class="flex gap-3 w-full sm:w-1/4">
+        <div class="flex flex-col gap-2">
+          <span class="text-2xl font-medium leading-5">{{store.sneakerStoreName}}</span>
+          <span class="text-sm font-extralight leading-6 ">{{store.sneakerStoreAddress}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class=" max-w-3xl flex-col w-full p-8 bg-white-100 dark:bg-gray-700 dark:text-white shadow-xl h-full pt-4 overflow-y-scroll">
+    <div class="flex fex-col sm:flex gap-2">
+      <div class="flex flex-col gap-4 w-full sm:w-11/12">
+        <span class="text-3xl">The best sneakers you'll ever see.</span>
+        <p class="">{{store.sneakerStoreDescription}}</p>
+        <div class="sm:hidden flex content-center items-center  text-center justify-center">
+          <img [src]="bannerUrl | async" alt="store" class="thumb-img-store-owner">
+        </div>
+        <div class=" content-center items-center  text-center justify-center">
+          <button [routerLink]="['/order', 'stores', store.sneakerStoreId]"
+                  class="py-3 px-4 border w-max shadow-sm text-base font-normal rounded-md text-white bg-picton-red dark:bg-gray-700 text-overflow: ellipsis">
+            Order from {{store.sneakerStoreName}}
+          </button>
+        </div>
+      </div>
+      <div class="hidden sm:flex flex-wrap content-end mt-9 justify-end w-full sm:w-max">
+        <img [src]="imageUrl | async" alt="owner" class="thumb-img-store-owner">
+      </div>
+
+    </div>
+  </div>
+</div>

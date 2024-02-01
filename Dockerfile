@@ -1,0 +1,22 @@
+# FROM  nginx:1.23.2-alpine
+# WORKDIR /app
+# COPY . .
+
+# RUN ng serve --live-reload false --configuration development
+# EXPOSE 4203
+# CMD ["npm", "run", "start"]
+
+FROM node:latest as node
+WORKDIR /app
+COPY . .
+
+RUN rm -r ./dist
+RUN ls
+RUN npm install
+RUN npm run build:utils
+RUN npm run build:app1
+
+FROM nginx:alpine
+COPY --from=node /app/dist/app1-home /usr/share/nginx/html
+
+EXPOSE 80

@@ -1,0 +1,35 @@
+<div class="content-center relative flex flex-col items-center justify-center h-auto ">
+  <div class=" max-w-3xl flex-col w-full p-8 bg-white dark:bg-gray-700 dark:text-white shadow-xl h-full">
+    <!-- Total Display -->
+    <div class="font-bold flex flex-wrap w-full mb-3">
+      <span>Total: ${{ total }}</span>
+    </div>
+
+    <div class="flex flex-row gap-2 border-b pb-7">
+      <address class="w-full font-bold sm:w-1/4">Name / Address / Phone</address>
+      <div class="w-full font-bold sm:w-2/5">Order</div>
+      <div class="font-bold flex flex-wrap  w-full  sm:w-1/12">Total</div>
+    </div>
+
+    <div>
+      <h2 class="text-xl p-3 border-b pb-3">New Order</h2>
+      <ng-container *ngFor="let order of orders">
+        <div  [ngClass]="['flex', 'flex-col' ,'sm:flex-row' ,'gap-2', 'dark:bg-gray-700' ,'border-b','p-3', true? 'bg-red-100': '']">
+          <div class="flex flex-col w-full not-italic font-normal sm:w-1/4">
+            <span> {{order.name}} </span>
+            <span> {{order.deliveryAddress}} </span>
+            <span> {{order.phoneNumber}} </span>
+          </div>
+          <div class=" flex flex-col w-full not-italic font-normal sm:w-2/5">
+            <ul class="list-none list-inside md:list-disc" *ngFor="let item of order.items">
+              <li> {{item.name}} </li>
+            </ul>
+          </div>
+          <div class="flex flex-wrap w-full sm:w-1/12">
+            <span> ${{order.price}} </span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

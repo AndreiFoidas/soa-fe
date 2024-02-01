@@ -1,0 +1,24 @@
+version: '3'
+services:
+    forntend-home:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        image: angular-test:1
+        ports:
+            - "4203:80"
+    forntend-resaturant:
+        build:
+            context: .
+            dockerfile: ./Dockerfile-app2
+        image: angular-test:2
+        ports:
+            - "4207:80"
+    forntend-orders:
+        build:
+            context: .
+            dockerfile: ./Dockerfile-app3
+        image: docker.io/library/angular-test:3
+        ports:
+            - "4208:80"
+    
